@@ -5,8 +5,24 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Perla_AP2_API_20190008"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="Menu" Height="211" Width="382">
     <Grid>
+        <StackPanel>
+            <StackPanel Orientation = "Horizontal">
+                <Menu Height="18">
+                    <MenuItem Header="_Registros"  >
+                        <MenuItem x:Name="rProyectosItem" Header="Registro de Compras" Click="rComprasItem_Click" />
+                    </MenuItem>
+                </Menu>
 
+                <Menu Height="18">
+                    <MenuItem Header="Consultas">
+                        <MenuItem x:Name="cProyectosItem" Header="Consulta de Compras" Click="cComprasItem_Click"/>
+                        <MenuItem x:Name="cTiposTareasItem" Header="Consulta de Articulos" Click="cArticulosItem_Click" />
+                    </MenuItem>
+                </Menu>
+
+            </StackPanel>
+        </StackPanel>
     </Grid>
 </Window>

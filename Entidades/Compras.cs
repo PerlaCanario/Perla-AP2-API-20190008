@@ -14,6 +14,7 @@ namespace Perla_AP2_API_20190008.Entidades
         public int ComprasId { get; set; }
         public DateTime Fecha { get; set; }
         public Proveedores proveedores { get; set; }
+        public decimal Total { get; set; }
 
         [ForeignKey("ComprasId")]
         public List<ComprasDetalle> Detalle { get; set; } = new List<ComprasDetalle>();

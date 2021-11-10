@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Perla_AP2_API_20190008.UI.Consultas;
+using Perla_AP2_API_20190008.UI.Registros;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -23,6 +25,21 @@ namespace Perla_AP2_API_20190008
         public MainWindow()
         {
             InitializeComponent();
+        }
+
+        private void rComprasItem_Click(object sender, RoutedEventArgs e)
+        {
+            new rCompras().Show();
+        }
+
+        private void cComprasItem_Click(object sender, RoutedEventArgs e)
+        {
+            new cCompras().Show();
+        }
+
+        private void cArticulosItem_Click(object sender, RoutedEventArgs e)
+        {
+            new cArticulos().Show();
         }
     }
 }
