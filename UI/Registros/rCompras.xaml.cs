@@ -39,6 +39,7 @@ namespace Perla_AP2_API_20190008.UI.Registros
         {
             CostoTextBox.Clear();
             CantidadTextBox.Clear();
+            ImporteTextBox.Clear();
             this.DataContext = null;
             this.DataContext = compras;
             TotalTextBox.Text = compras.Total.ToString();
@@ -85,7 +86,7 @@ namespace Perla_AP2_API_20190008.UI.Registros
             if (DatosDataGrid.Items.Count == 0)
             {
                 esValido = false;
-                MessageBox.Show("Debe agregar tareas", "Advertencia",
+                MessageBox.Show("Debe agregar Articulo", "Advertencia",
                     MessageBoxButton.OK, MessageBoxImage.Information);
             }
             return esValido;
@@ -112,10 +113,15 @@ namespace Perla_AP2_API_20190008.UI.Registros
             if (!ValidarAgregar())
                 return;
 
-            int codigo;
-            compras.Total += Convert.ToInt32(CostoTextBox.Text);
-            //codigo = Convert.ToInt32(ArticulosComboBox.SelectedValue.ToString());
+            int codigo, proveer;
+
+            compras.Total += Convert.ToInt32(ImporteTextBox.Text);
+
             codigo = (ArticulosComboBox.SelectedIndex + 1);
+            compras.ArticuloId = codigo;
+
+            proveer = FiltroComboBox.SelectedIndex + 1;
+            compras.ProveedorId = proveer;
 
             compras.Detalle.Add(new ComprasDetalle              (
                     compras.ComprasId,
@@ -127,6 +133,7 @@ namespace Perla_AP2_API_20190008.UI.Registros
                 ));
 
             Cargar();
+            ImporteTextBox.Clear();
         }
 
         private void Remover_Click(object sender, RoutedEventArgs e)

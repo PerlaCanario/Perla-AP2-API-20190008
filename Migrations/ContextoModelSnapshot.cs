@@ -79,18 +79,19 @@ namespace Perla_AP2_API_20190008.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("INTEGER");
 
+                    b.Property<int>("ArticuloId")
+                        .HasColumnType("INTEGER");
+
                     b.Property<DateTime>("Fecha")
                         .HasColumnType("TEXT");
+
+                    b.Property<int>("ProveedorId")
+                        .HasColumnType("INTEGER");
 
                     b.Property<decimal>("Total")
                         .HasColumnType("TEXT");
 
-                    b.Property<int?>("proveedoresProveedorId")
-                        .HasColumnType("INTEGER");
-
                     b.HasKey("ComprasId");
-
-                    b.HasIndex("proveedoresProveedorId");
 
                     b.ToTable("Compras");
                 });
@@ -163,15 +164,6 @@ namespace Perla_AP2_API_20190008.Migrations
                             ProveedorId = 4,
                             Nombre = "Supermercado Canario"
                         });
-                });
-
-            modelBuilder.Entity("Perla_AP2_API_20190008.Entidades.Compras", b =>
-                {
-                    b.HasOne("Perla_AP2_API_20190008.Entidades.Proveedores", "proveedores")
-                        .WithMany()
-                        .HasForeignKey("proveedoresProveedorId");
-
-                    b.Navigation("proveedores");
                 });
 
             modelBuilder.Entity("Perla_AP2_API_20190008.Entidades.ComprasDetalle", b =>

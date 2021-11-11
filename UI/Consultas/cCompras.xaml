@@ -37,9 +37,8 @@
                     <DataGrid.Columns>
                         <DataGridTextColumn Header="ComprasId" Binding="{Binding ComprasId}" />
                         <DataGridTextColumn Header="Fecha" Binding="{Binding Fecha}"/>
-                        <DataGridTextColumn Header="Proveedor" Binding="{Binding Proveedor}"/>
-                        <DataGridTextColumn Header="Articulo" Binding="{Binding Articulo}"/>
-                        <DataGridTextColumn Header="Costo" Binding="{Binding Costo}"/>
+                        <DataGridTextColumn Header="ProveedorId" Binding="{Binding ProveedorId}"/>
+                        <DataGridTextColumn Header="Total" Binding="{Binding Total}"/>
                     </DataGrid.Columns>
                 </DataGrid>
             </StackPanel>

@@ -78,12 +78,12 @@ namespace Perla_AP2_API_20190008.BLL
             Contexto contexto = new Contexto();
             try
             {
-                var proyecto = ComprasBLL.Buscar(id);
-                List<ComprasDetalle> viejosDetalles = Buscar(proyecto.ComprasId).Detalle;
+                var compras = ComprasBLL.Buscar(id);
+                List<ComprasDetalle> viejosDetalles = Buscar(compras.ComprasId).Detalle;
 
-                if (proyecto != null)
+                if (compras != null)
                 {
-                    contexto.Entry(proyecto).State = EntityState.Deleted;
+                    contexto.Entry(compras).State = EntityState.Deleted;
                     paso = contexto.SaveChanges() > 0;
                 }
             }

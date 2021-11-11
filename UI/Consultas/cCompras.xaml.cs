@@ -39,11 +39,15 @@ namespace Perla_AP2_API_20190008.UI.Consultas
                         listado = ComprasBLL.GetList(p => true);
                         break;
                     case 1:
-                        listado = ComprasBLL.GetList(p => p.proveedores.Nombre.ToLower().Contains(criterio.ToLower()));
+                        listado = ComprasBLL.GetList(p => p.ProveedorId == Convert.ToInt32(CriterioTextBox.Text));
                         break;
                     case 2:
                         listado = ComprasBLL.GetList(p => p.ComprasId == Convert.ToInt32(CriterioTextBox.Text));
                         break;
+                    case 3:
+                        listado = ComprasBLL.GetList(p => p.Total == Convert.ToInt32(CriterioTextBox.Text));
+                        break;
+                    
                 }
             }
             else

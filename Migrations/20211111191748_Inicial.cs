@@ -23,6 +23,22 @@ namespace Perla_AP2_API_20190008.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "Compras",
+                columns: table => new
+                {
+                    ComprasId = table.Column<int>(type: "INTEGER", nullable: false)
+                        .Annotation("Sqlite:Autoincrement", true),
+                    Fecha = table.Column<DateTime>(type: "TEXT", nullable: false),
+                    ProveedorId = table.Column<int>(type: "INTEGER", nullable: false),
+                    Total = table.Column<decimal>(type: "TEXT", nullable: false),
+                    ArticuloId = table.Column<int>(type: "INTEGER", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Compras", x => x.ComprasId);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "Proveedores",
                 columns: table => new
                 {
@@ -33,27 +49,6 @@ namespace Perla_AP2_API_20190008.Migrations
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Proveedores", x => x.ProveedorId);
-                });
-
-            migrationBuilder.CreateTable(
-                name: "Compras",
-                columns: table => new
-                {
-                    ComprasId = table.Column<int>(type: "INTEGER", nullable: false)
-                        .Annotation("Sqlite:Autoincrement", true),
-                    Fecha = table.Column<DateTime>(type: "TEXT", nullable: false),
-                    proveedoresProveedorId = table.Column<int>(type: "INTEGER", nullable: true),
-                    Total = table.Column<decimal>(type: "TEXT", nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Compras", x => x.ComprasId);
-                    table.ForeignKey(
-                        name: "FK_Compras_Proveedores_proveedoresProveedorId",
-                        column: x => x.proveedoresProveedorId,
-                        principalTable: "Proveedores",
-                        principalColumn: "ProveedorId",
-                        onDelete: ReferentialAction.Restrict);
                 });
 
             migrationBuilder.CreateTable(
@@ -127,11 +122,6 @@ namespace Perla_AP2_API_20190008.Migrations
                 values: new object[] { 4, "Supermercado Canario" });
 
             migrationBuilder.CreateIndex(
-                name: "IX_Compras_proveedoresProveedorId",
-                table: "Compras",
-                column: "proveedoresProveedorId");
-
-            migrationBuilder.CreateIndex(
                 name: "IX_ComprasDetalle_ComprasId",
                 table: "ComprasDetalle",
                 column: "ComprasId");
@@ -146,10 +136,10 @@ namespace Perla_AP2_API_20190008.Migrations
                 name: "ComprasDetalle");
 
             migrationBuilder.DropTable(
-                name: "Compras");
+                name: "Proveedores");
 
             migrationBuilder.DropTable(
-                name: "Proveedores");
+                name: "Compras");
         }
     }
 }
