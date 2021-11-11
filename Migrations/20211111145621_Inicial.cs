@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore.Migrations;
+﻿using System;
+using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace Perla_AP2_API_20190008.Migrations
 {
@@ -32,6 +33,52 @@ namespace Perla_AP2_API_20190008.Migrations
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Proveedores", x => x.ProveedorId);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Compras",
+                columns: table => new
+                {
+                    ComprasId = table.Column<int>(type: "INTEGER", nullable: false)
+                        .Annotation("Sqlite:Autoincrement", true),
+                    Fecha = table.Column<DateTime>(type: "TEXT", nullable: false),
+                    proveedoresProveedorId = table.Column<int>(type: "INTEGER", nullable: true),
+                    Total = table.Column<decimal>(type: "TEXT", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Compras", x => x.ComprasId);
+                    table.ForeignKey(
+                        name: "FK_Compras_Proveedores_proveedoresProveedorId",
+                        column: x => x.proveedoresProveedorId,
+                        principalTable: "Proveedores",
+                        principalColumn: "ProveedorId",
+                        onDelete: ReferentialAction.Restrict);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "ComprasDetalle",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "INTEGER", nullable: false)
+                        .Annotation("Sqlite:Autoincrement", true),
+                    ProveedorId = table.Column<int>(type: "INTEGER", nullable: false),
+                    ArticuloId = table.Column<int>(type: "INTEGER", nullable: false),
+                    Cantidad = table.Column<int>(type: "INTEGER", nullable: false),
+                    Descripcion = table.Column<string>(type: "TEXT", nullable: true),
+                    Importe = table.Column<int>(type: "INTEGER", nullable: false),
+                    Costo = table.Column<int>(type: "INTEGER", nullable: false),
+                    ComprasId = table.Column<int>(type: "INTEGER", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_ComprasDetalle", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_ComprasDetalle_Compras_ComprasId",
+                        column: x => x.ComprasId,
+                        principalTable: "Compras",
+                        principalColumn: "ComprasId",
+                        onDelete: ReferentialAction.Restrict);
                 });
 
             migrationBuilder.InsertData(
@@ -78,12 +125,28 @@ namespace Perla_AP2_API_20190008.Migrations
                 table: "Proveedores",
                 columns: new[] { "ProveedorId", "Nombre" },
                 values: new object[] { 4, "Supermercado Canario" });
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Compras_proveedoresProveedorId",
+                table: "Compras",
+                column: "proveedoresProveedorId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_ComprasDetalle_ComprasId",
+                table: "ComprasDetalle",
+                column: "ComprasId");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
                 name: "Articulos");
+
+            migrationBuilder.DropTable(
+                name: "ComprasDetalle");
+
+            migrationBuilder.DropTable(
+                name: "Compras");
 
             migrationBuilder.DropTable(
                 name: "Proveedores");

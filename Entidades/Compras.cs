@@ -28,13 +28,15 @@ namespace Perla_AP2_API_20190008.Entidades
         public int ArticuloId { get; set; }
         public int Cantidad { get; set; }
         public string Descripcion { get; set; }
-        public string Importe { get; set; }
-        public ComprasDetalle(int proveedorId, int articuloId, int cantidad, string descripcion, string importe)
+        public int Importe { get; set; }
+        public int Costo { get; set; }
+        public ComprasDetalle(int proveedorId, int articuloId, int cantidad, int costo, string descripcion, int importe)
         {
             Id = 0;
             ProveedorId = proveedorId;
             ArticuloId = articuloId;
             Cantidad = cantidad;
+            Costo = costo;
             Descripcion = descripcion;
             Importe = importe;
         }

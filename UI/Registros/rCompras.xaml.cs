@@ -71,12 +71,12 @@ namespace Perla_AP2_API_20190008.UI.Registros
                 MessageBox.Show("Seleccione un Articulo", "Advertencia",
                     MessageBoxButton.OK, MessageBoxImage.Information);
             }
-            else if (ImporteTextBox.Text.Length == 0)
-            {
-                esValido = false;
-                MessageBox.Show("Inserte una cantidad", "Advertencia",
-                    MessageBoxButton.OK, MessageBoxImage.Information);
-            }
+            //else if (ImporteTextBox.Text.Length == 0)
+            //{
+            //    esValido = false;
+            //    MessageBox.Show("Inserte una cantidad", "Advertencia",
+            //        MessageBoxButton.OK, MessageBoxImage.Information);
+            //}
             return esValido;
         }
         private bool ValidarGuardar()
@@ -111,12 +111,20 @@ namespace Perla_AP2_API_20190008.UI.Registros
         {
             if (!ValidarAgregar())
                 return;
-            compras.Total += Convert.ToInt32(CostoTextBox.Text);
 
-            compras.Detalle.Add(new ComprasDetalle(compras.ComprasId,
-                Convert.ToInt32(ArticulosComboBox.SelectedValue.ToString()),
-                Convert.ToInt32(CostoTextBox.Text),
-                CantidadTextBox.Text.ToString(), ImporteTextBox.Text.ToString()));
+            int codigo;
+            compras.Total += Convert.ToInt32(CostoTextBox.Text);
+            //codigo = Convert.ToInt32(ArticulosComboBox.SelectedValue.ToString());
+            codigo = (ArticulosComboBox.SelectedIndex + 1);
+
+            compras.Detalle.Add(new ComprasDetalle              (
+                    compras.ComprasId,
+                    articuloId: codigo,
+                    Convert.ToInt32(CantidadTextBox.Text),
+                    Convert.ToInt32(CostoTextBox.Text),
+                    ArticulosComboBox.Text,
+                    Convert.ToInt32(ImporteTextBox.Text)
+                ));
 
             Cargar();
         }
