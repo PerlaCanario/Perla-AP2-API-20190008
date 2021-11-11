@@ -58,7 +58,7 @@ namespace Perla_AP2_API_20190008.BLL
             }
             catch (Exception)
             {
-                throw;
+                //throw;
             }
             finally
             {

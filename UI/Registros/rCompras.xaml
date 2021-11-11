@@ -42,7 +42,7 @@
                         <StackPanel  Width="146" Margin="0,20,0,0" Orientation="Vertical">
                             <Label Content="Articulos:" />
                             <StackPanel Orientation="Horizontal">
-                                <ComboBox x:Name="ArticulosComboBox" Width="140" Height="25" SelectedValue="{Binding ArticuloId}">
+                                <ComboBox x:Name="ArticulosComboBox" Width="140" Height="25" >
                                     <ComboBoxItem Content="Caja de avena"/>
                                     <ComboBoxItem Content="Faldos de refrescos"/>
                                     <ComboBoxItem Content="Cajas de sopa"/>

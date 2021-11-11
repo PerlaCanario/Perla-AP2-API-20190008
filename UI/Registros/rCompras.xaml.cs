@@ -25,16 +25,16 @@ namespace Perla_AP2_API_20190008.UI.Registros
         public rCompras()
         {
             InitializeComponent();
-            IniciarCombobox();
+            //IniciarCombobox();
             Limpiar();
         }
-        private void IniciarCombobox()
-        {
-            ArticulosComboBox.ItemsSource = ArticulosBLL.GetList();
-            ArticulosComboBox.SelectedValuePath = "ArticuloId";
-            ArticulosComboBox.DisplayMemberPath = "Descripcion";
-            Limpiar();
-        }
+        //private void IniciarCombobox()
+        //{
+        //    ArticulosComboBox.ItemsSource = ArticulosBLL.GetList();
+        //    ArticulosComboBox.SelectedValuePath = "ArticuloId";
+        //    ArticulosComboBox.DisplayMemberPath = "Descripcion";
+        //    Limpiar();
+        //}
         private void Cargar()
         {
             CostoTextBox.Clear();
@@ -116,7 +116,7 @@ namespace Perla_AP2_API_20190008.UI.Registros
             compras.Detalle.Add(new ComprasDetalle(compras.ComprasId,
                 Convert.ToInt32(ArticulosComboBox.SelectedValue.ToString()),
                 Convert.ToInt32(CostoTextBox.Text),
-                CantidadTextBox.Text.ToString()));
+                CantidadTextBox.Text.ToString(), ImporteTextBox.Text.ToString()));
 
             Cargar();
         }

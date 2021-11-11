@@ -15,6 +15,7 @@ namespace Perla_AP2_API_20190008.Entidades
         public DateTime Fecha { get; set; }
         public Proveedores proveedores { get; set; }
         public decimal Total { get; set; }
+        //public int ArticuloId { get; set; }
 
         [ForeignKey("ComprasId")]
         public List<ComprasDetalle> Detalle { get; set; } = new List<ComprasDetalle>();
@@ -27,13 +28,15 @@ namespace Perla_AP2_API_20190008.Entidades
         public int ArticuloId { get; set; }
         public int Cantidad { get; set; }
         public string Descripcion { get; set; }
-        public ComprasDetalle(int proveedorId, int articuloId, int cantidad, string descripcion)
+        public string Importe { get; set; }
+        public ComprasDetalle(int proveedorId, int articuloId, int cantidad, string descripcion, string importe)
         {
             Id = 0;
             ProveedorId = proveedorId;
             ArticuloId = articuloId;
             Cantidad = cantidad;
             Descripcion = descripcion;
+            Importe = importe;
         }
 
     }
